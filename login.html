@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+		<title>Evaluation of Academic Performance</title>
+		<style type="text/css">		
+			body {
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+			.showcase {
+				height: 100vh;
+				width: 100%;
+				background-position: center;
+				background-repeat: no-repeat;
+				background-size: cover;
+				opacity: 1;
+			}
+			
+			.textbox {
+				background-color: #ccd9d9;
+				opacity: 0.6;
+				width: 280px;
+				height: 280px;
+				position: relative;
+				top: 70px;
+				left: 200px;
+				color: black;
+			}
+			table {
+				border-collapse: collapse;
+				border-color: transparent;
+				font-size: 20px;
+			}
+
+			td {
+				border: 1px transparent;
+				padding: 5px;
+			}
+
+			.empty-row td {
+				border: none;
+				background-color: transparent;
+			}	
+			.rectangle-box {
+				width: 160px;
+				height: 50px;
+				border: 2px;
+				background-color: #7f9994;
+			}
+			h1{
+				color: white;
+			}
+		</style>
+</head>
+<body>
+    <div class="showcase">
+		<div class="rectangle-box"><h1>Login Page</h1></div>
+	<div class="textbox">
+    {% if error %}
+        <p style="color: red;">{{ error }}</p>
+    {% endif %}
+    <form method="GET" action="/home">
+	<table>
+        <tr>
+			<td>Student ID:</td>
+			<td><input type="text" name="username" required></td>
+		</tr>
+		<tr class="empty-row">
+			<td></td>
+			<td></td>
+		</tr>
+        <tr>		
+			<td>Password:</td>
+			<td><input type="password" name="password" required></td>
+		</tr>
+		<tr class="empty-row">
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>			
+			<td></td>
+			<td><input type="submit" value="Submit"></td>
+		</tr>
+    </form>
+	</div>
+	</div>
+</body>
+</html>

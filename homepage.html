@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+	<style type="text/css">		
+			body {
+			background-color: #a7cfc7;
+			font-color: black;
+			font-size: 20px;
+			}
+			hr{
+				border-color: black;
+			}
+	</style>
+</head>
+<body>
+    <div><h1>Welcome, {{ student.name }}</h1></div>
+    <div><h2>Student Details:</h2>
+    <div><p><strong>Name:</strong> {{ student.name }}</p></div>
+	<hr>
+    <div><p><strong>Age:</strong> {{ student.age }}</p></div>
+	<hr>
+    <div><p><strong>Gender:</strong> {{ student.gender }}</p></div>
+	<hr>
+    <div><p><strong>Address:</strong> {{ student.address }}</p></div>
+	<hr>
+    <div><p><strong>Email:</strong> {{ student.email }}</p></div>
+	<hr>
+    <div><p><strong>Father's Name:</strong> {{ student.father_name }}</p></div>
+	<hr>
+    <div><p><strong>Course:</strong> {{ student.course }}</p></div>
+	<hr>
+    <div><p><strong>Semester:</strong> {{ student.semester }}</p></div>
+	<hr>
+    <div><p><strong>Section:</strong> {{ student.section }}</p></div>
+	<hr>
+	<div><p><strong>CGPA:</strong> {{ student.cgpa }}</p></div>
+	<hr>
+	</div>
+    
+    <h2>Academic Performance:</h2>
+	<div id="graph"></div>
+	<div><h3>Remarks: {{remarks}}</h3></div>
+	<hr>
+	
+	<div><p><strong>Note:</strong>The above results are based on your performance in every semester till now.It includes your cgpa,attendence,sessional marks,extra certification courses.It is a completely unbiased calculation.</p>
+    </div><hr>
+	<p>For further inquires contact: 9876543210</p>
+	
+    <script>
+        var semesters = ['Semester 1', 'Semester 2', 'Semester 3', 'Semester 4'];
+        var marks = {{ performance|tojson }};
+
+        var trace = {
+            x: semesters,
+            y: marks,
+            type: 'bar'
+        };
+
+        var data = [trace];
+
+        var layout = {
+            title: 'Academic Performance',
+            xaxis: { title: 'Semester' },
+            yaxis: { title: 'SGPA' },
+        };
+
+        Plotly.newPlot('graph', data, layout);
+    </script>
+</body>
+</html>
